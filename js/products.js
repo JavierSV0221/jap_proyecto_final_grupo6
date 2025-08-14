@@ -83,6 +83,6 @@ async function displayProducts() {
     }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    void displayProducts();
+document.addEventListener("DOMContentLoaded", async () => {
+    await displayProducts();
 });
