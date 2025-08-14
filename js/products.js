@@ -44,6 +44,7 @@ async function displayProducts() {
             const image = product.image ?? "";
             const description = product.description ?? "";
             const cost = product.cost ?? 0;
+            const currency = product.currency ?? "$";
             const soldCount = product.soldCount ?? 0;
 
             const imgElement = document.createElement("img");
@@ -60,7 +61,7 @@ async function displayProducts() {
             descElement.textContent = description;
 
             const costElement = document.createElement("p");
-            costElement.textContent = `Precio: $${cost}`;
+            costElement.textContent = `Precio: ${currency} ${cost}`;
 
             const soldCountElement = document.createElement("span");
             soldCountElement.textContent = soldCount;
