@@ -5,6 +5,7 @@ async function fetchProductsByCatID(id) {
 
         if (!response.ok) {
             console.error("fetchProductsByCatID() - error response: ", response);
+            return [];
         }
 
         const responseBody = await response.json();
