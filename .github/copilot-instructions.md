@@ -43,7 +43,7 @@ The main focus is on keeping HTML, CSS, and JavaScript clean, readable, and resp
 ## Project Layout
 - Root contains:
     - `index.html` — homepage
-    - Other `.html` pages (cart.html, categories.html, etc.)
+    - Additional `.html` pages for other site sections
     - `/css/` — stylesheets (Bootstrap, custom CSS)
     - `/js/` — JavaScript files
     - `/webfonts/` — font assets
