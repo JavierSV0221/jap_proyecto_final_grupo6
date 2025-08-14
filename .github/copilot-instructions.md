@@ -1,6 +1,6 @@
 # Copilot Coding Agent Instructions
 
-> **Important:** Always respond in **Spanish** when generating explanations, comments, commit messages, or code documentation for this repository.
+> **Importante:** Siempre responde en **español** al generar explicaciones, comentarios, mensajes de commit o documentación de código para este repositorio. **Excepto:** Mantén los nombres de librerías, palabras clave técnicas, identificadores de código y referencias a APIs que solo existen en inglés sin traducir para evitar confusiones o problemas de compatibilidad.
 
 ## Repository Overview
 This repository contains a simple static website built with:
