@@ -44,15 +44,36 @@ async function displayProducts() {
             const cost = product.cost ?? 0;
             const soldCount = product.soldCount ?? 0;
 
-            productDiv.innerHTML = `
-                <img src="${image}" alt="${name}">
-                <div class="product-info">
-                    <h4>${name}</h4>
-                    <p>${description}</p>
-                    <p>Precio: $${cost}</p>
-                    <span>${soldCount}</span> ${(soldCount === 1) ? 'Vendido' : 'Vendidos'}
-                </div>
-            `;
+            const imgElement = document.createElement("img");
+            imgElement.src = image;
+            imgElement.alt = name;
+
+            const productInfoDiv = document.createElement("div");
+            productInfoDiv.className = "product-info";
+
+            const nameElement = document.createElement("h4");
+            nameElement.textContent = name;
+
+            const descElement = document.createElement("p");
+            descElement.textContent = description;
+
+            const costElement = document.createElement("p");
+            costElement.textContent = `Precio: $${cost}`;
+
+            const soldCountElement = document.createElement("span");
+            soldCountElement.textContent = soldCount;
+
+            const soldCountTextElement = document.createTextNode(
+                (soldCount === 1) ? ' Vendido' : ' Vendidos'
+            );
+
+            productInfoDiv.appendChild(nameElement);
+            productInfoDiv.appendChild(descElement);
+            productInfoDiv.appendChild(costElement);
+            productInfoDiv.appendChild(soldCountElement);
+            productInfoDiv.appendChild(soldCountTextElement);
+            productDiv.appendChild(imgElement);
+            productDiv.appendChild(productInfoDiv);
 
             container.appendChild(productDiv);
         });
