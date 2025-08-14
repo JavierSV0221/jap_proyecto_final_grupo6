@@ -4,13 +4,13 @@ async function fetchProductsByCatID(id) {
         const response = await fetch(URL);
 
         if (!response.ok) {
-            console.error("getProductsByID() - error response: ", response);
+            console.error("fetchProductsByCatID() - error response: ", response);
         }
 
         const responseBody = await response.json();
         return responseBody.products ?? [];
     } catch (error) {
-        console.error("getProductsByID() - error: ", error);
+        console.error("fetchProductsByCatID() - error: ", error);
         return [];
     }
 }
@@ -22,7 +22,7 @@ async function displayProducts() {
 
         const catID = localStorage.getItem("catID");
         if (!catID) {
-            console.error("showProducts() - error: no category ID found");
+            console.error("displayProducts() - error: no category ID found");
             return;
         }
 
@@ -79,7 +79,7 @@ async function displayProducts() {
             container.appendChild(productDiv);
         });
     } catch (error) {
-        console.error("showProducts() - error: ", error);
+        console.error("displayProducts() - error: ", error);
     }
 }
 
