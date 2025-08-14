@@ -11,6 +11,7 @@ async function fetchProductsByCatID(id) {
         return responseBody.products ?? [];
     } catch (error) {
         console.error("getProductsByID() - error: ", error);
+        return [];
     }
 }
 
