@@ -1,0 +1,299 @@
+/* ==========================
+   ESTILOS GENERALES
+========================== */
+body {
+  font-family: "Nata Sans", sans-serif;
+  background-color: var(--primary-background);
+  color: var(--text-color);
+}
+
+.material-icons {
+  font-size: 28px;
+  color: var(--text-color);
+}
+
+/* ==========================
+   HEADER
+========================== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  max-width: 1300px;
+  margin: auto;
+  padding: 0 20px;
+  background: var(--second-background);
+  color: var(--text-color);
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+}
+
+/* ----- Navegación ----- */
+nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 20px;
+}
+
+nav ul li {
+  display: flex;
+  align-items: center;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover {
+  color: var(--enfasis-color);
+}
+
+/* ----- Botones Header ----- */
+.toggle-theme,
+.userAccount {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 4px 4px 0 4px;
+  border-radius: 500px;
+  transition: background 0.3s;
+}
+
+.toggle-theme:hover,
+.userAccount:hover {
+  background: var(--enfasis-color);
+  color: var(--extra);
+}
+
+/* ----- Botón Hamburguesa ----- */
+.navbar-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.navbar-toggle span {
+  font-size: 1.5rem;
+  color: var(--text-color);
+}
+
+/* ----- Header Responsive ----- */
+@media (max-width: 768px) {
+  .navbar-toggle {
+    display: block;
+  }
+
+  .navbar-toggle span {
+    font-size: 35px;
+  }
+
+  nav {
+    display: none;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: var(--second-background);
+    width: 200px;
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  nav.show {
+    display: flex;
+  }
+}
+
+/* ==========================
+   CATEGORÍA Y FILTROS
+========================== */
+.container>.category-filters {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  padding: 20px 0;
+  gap: 25px;
+}
+
+.category-filters>.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 300px;
+}
+
+/* ----- Rango de Precios ----- */
+.filters>.price {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  height: 40px;
+}
+
+input#minPrice,
+input#maxPrice {
+  width: 145px;
+  height: 100%;
+  border: none;
+  border-radius: 100px;
+  padding: 0 20px;
+  background-color: var(--second-background);
+}
+
+/* ----- Orden y Vista ----- */
+.filters>div:last-child {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+#list-grid,
+#order {
+  height: 40px;
+  background-color: var(--second-background);
+}
+
+/* Checkbox oculto */
+#list-grid {
+  height: 40px;
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Botón visual de cambio lista/grid */
+label[for="list-grid"] {
+  height: 100%;
+  width: 40px;
+  border-radius: 100px;
+  background-color: var(--second-background);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+
+label[for="list-grid"] span {
+  margin: auto;
+}
+
+/* Selector de orden */
+#order {
+  width: 250px;
+  border: none;
+  border-radius: 100px;
+  padding: 0 20px;
+}
+
+/* ----- Responsive filtros ----- */
+@media (max-width: 768px) {
+  .container>.category-filters {
+    flex-direction: column;
+  }
+}
+
+/* ==========================
+   PRODUCTOS
+========================== */
+#products {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* ----- Vista Lista ----- */
+#products.list-view .product {
+  display: flex;
+  gap: 1rem;
+  background-color: var(--second-background);
+  border-radius: 8px;
+  padding: 10px;
+  align-items: center;
+}
+
+#products.list-view .product img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+#products.list-view .product-info {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+/* ----- Vista Grid ----- */
+#products.grid-view {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+#products.grid-view .product {
+  background-color: var(--second-background);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+#products.grid-view .product img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+#products.grid-view .product-info {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ----- Elementos comunes a ambas vistas ----- */
+#products .product-name-description {
+  width: 100%;
+}
+
+#products .product-sold-price {
+  width: 140px;
+}
+
+#products .product-info h4 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+#products .product-info p {
+  margin: 0.3rem 0;
+}
+
+#products .product-info span {
+  font-size: 0.9rem;
+  margin-top: auto;
+}

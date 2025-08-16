@@ -39,3 +39,38 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+// MODO CLARO/OSCURO
+const body = document.body;
+const toggleBtn = document.getElementById("toggle-theme");
+const toggleIcon = toggleBtn.querySelector(".material-icons");
+
+const savedTheme = localStorage.getItem("theme");
+const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+    body.classList.add("dark-mode");
+    toggleIcon.textContent = "light_mode";
+}
+
+function toggleTheme() {
+    body.classList.toggle("dark-mode");
+    const isDark = body.classList.contains("dark-mode");
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+    toggleIcon.textContent = isDark ? "light_mode" : "dark_mode";
+}
+
+toggleIcon.textContent = body.classList.contains("dark-mode")
+    ? "light_mode"
+    : "dark_mode";
+
+toggleBtn.addEventListener("click", toggleTheme);
+
+
+// MENU HAMBURGUESA
+const navBtn = document.querySelector(".navbar-toggle");
+const nav = document.querySelector("nav");
+
+navBtn.addEventListener("click", () => {
+    nav.classList.toggle("show");
+});
