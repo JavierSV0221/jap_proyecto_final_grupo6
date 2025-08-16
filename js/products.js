@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 // CAMBIAR ENTRE MODO LISTA Y GRID
 const checkbox = document.getElementById('list-grid');
 const icon = document.getElementById('icon-list-grid');
-const products = document.getElementById('products')
+const products = document.getElementById('products');
 
 function updateIcon() {
     products.classList.remove('list-view');
