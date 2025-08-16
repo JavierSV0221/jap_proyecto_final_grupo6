@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nata+Sans:wght@100..900&display=swap');
+
 :root {
   /* Modo Claro */
   --primary-background: #F4E9E4;
@@ -16,6 +18,12 @@
   --extra: #000000;
 }
 
+*{
+  box-sizing: border-box;
+  font-family: "Nata Sans", sans-serif;
+  transition: background 0.3s ease, color 0.3s ease;
+  color: var(--text-color);
+}
 
 .jumbotron,
 .card-body,
