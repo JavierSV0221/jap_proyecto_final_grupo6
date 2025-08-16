@@ -1,19 +1,19 @@
 async function fetchProductsByCatID(id) {
-    const URL = `${PRODUCTS_URL}${id}.json`;
-    try {
-        const response = await fetch(URL);
-
-        if (!response.ok) {
-            console.error("fetchProductsByCatID() - error response: ", response);
-            return [];
-        }
-
-        const responseBody = await response.json();
-        return responseBody.products ?? [];
-    } catch (error) {
-        console.error("fetchProductsByCatID() - error: ", error);
-        return [];
+    const jsonData = await getJSONData(PRODUCTS_URL + id + EXT_TYPE);
+    if (jsonData.status === "error") {
+        console.error("fetchProductsByCatID() - error: ", jsonData.data);
+        return null;
     }
+    return jsonData?.data?.products ?? [];
+}
+
+async function fetchCategoryByID(id) {
+    const jsonData = await getJSONData(CATEGORIES_URL);
+    if (jsonData.status === "error") {
+        console.error("fetchCategoryByID() - error: ", jsonData.data);
+        return null;
+    }
+    return jsonData?.data?.find(cat => cat.id === parseInt(id)) ?? null;
 }
 
 async function displayProducts() {
@@ -24,12 +24,31 @@ async function displayProducts() {
         const catID = localStorage.getItem("catID");
         if (!catID) {
             console.error("displayProducts() - error: no category ID found");
+            document.getElementById("category").textContent = "Categoría no encontrada";
+            document.getElementById("categoryDescription").textContent = ""
             return;
         }
 
-        const products = await fetchProductsByCatID(catID);
+        const category = await fetchCategoryByID(catID);
+        if (!category) {
+            document.getElementById("category").textContent = "Categoría no encontrada";
+            document.getElementById("categoryDescription").textContent = ""
+            return;
+        }
 
-        if (!products.length) {
+        document.getElementById("category").textContent = category.name;
+        document.getElementById("categoryDescription").textContent = category.description;
+
+        const products = await fetchProductsByCatID(catID);
+        if (products === null) {
+            console.error("displayProducts() - error: no products found for category ID", catID);
+            let msg = document.createElement("p");
+            msg.textContent = "Error al cargar los productos de la categoría.";
+            container.appendChild(msg);
+            return;
+        }
+
+        if (products.length === 0) {
             let msg = document.createElement("p");
             msg.textContent = "No se encontraron productos para esta categoría.";
             container.appendChild(msg);
