@@ -26,31 +26,25 @@ body {
 
 :root{
   --CANVAS: calc(var(--BRAND_COL) + var(--FORM_COL) + var(--GAP) + (2 * var(--PADX)));
-  --PADX: 32px;
-  --GAP: 72px;
+  --PADX: clamp(20px, 3vw, 32px);
+  --GAP: clamp(28px, 5vw, 72px);
   --BRAND_COL: 1230px;    /*Mover brand (la parte marron del login)*/
   --FORM_COL:  540px;   /*Mover formulario de login*/
-  --FORM_INNER: 500px;  
+  --FORM_INNER: min(500px, 92vw);;  
   --brandPadTop: 296px;
   --brandPadLeft: 112px;
   --brandPadRight: 72px;
   --brandPadBottom: 24px;
-  --brandTitleSize: 108px;
-  --brandSubSize: 36px;
-  --brandSubWidth: 520px;
-  --brandImgW: 560px;
+  --brandTitleSize: clamp(42px, 6vw, 108px);
+  --brandSubSize: clamp(16px, 2.2vw, 36px);
+  --brandSubWidth: min(520px, 90vw);
+  --brandImgW: clamp(260px, 38vw, 560px);
   --brandImgRight: 56px;
   --brandImgBottom: -60px;
   --toggleBtnLeft: 550px;
 }
 
-.loginWrap{
-  width: var(--CANVAS);
-  max-width: var(--CANVAS);
-  margin: 0 auto;
-  padding: 24px var(--PADX);
-  box-sizing: border-box;
-}
+
 
 .brandTitle,
 .formTitle {
@@ -103,7 +97,7 @@ body {
   font-size: var(--brandSubSize);
   max-width: var(--brandSubWidth);
   text-wrap: balance;
-  text-shadow: 0 3px 0 rgba(0,0,0,.12);;
+  text-shadow: 0 3px 0 rgba(0,0,0,.12);
 }
 
 .brandImg {
@@ -231,8 +225,41 @@ body {
     --CANVAS:calc(var(--BRAND_COL) + var(--FORM_COL) + var(--GAP) + (2 * var(--PADX)));
     --GAP: 80px;
     --BRAND_COL: 1680px;   
-    --FORM_INNER:: 400px; 
+    --FORM_INNER: 400px; 
     --FORM_COL:  670px;
     --toggleBtnLeft: 730px;
   }
 }
+@media (max-width: 1080px){
+  .loginGrid{ grid-template-columns: 1fr; }
+
+  .brand{
+    min-height: auto;
+    border-radius: 0 0 28px 28px;
+  }
+  .brandContent{
+    padding: clamp(56px, 9vw, 120px) var(--PADX) 24px;
+    grid-template-rows: auto auto 1fr;
+  }
+  .brandTitle{ font-size: clamp(38px, 8vw, var(--brandTitleSize)); }
+  .brandSubtitle{
+    font-size: clamp(16px, 2.6vw, var(--brandSubSize));
+    max-width: 100%;
+  }
+
+  .brandImg{
+    left: 58%; right: auto; transform: translateX(-10%);
+    bottom: -30px; width: min(84vw, 480px);
+    max-width: 50vw;
+    opacity: 0.40;
+  }
+
+  .form{
+    min-height: auto;
+    padding: 28px var(--PADX) 48px;
+    place-content: center;
+  }
+  .formTitle{ white-space: normal; }
+  .toggle-theme{ top: 12px; right: 12px; left: auto; }
+}
+
