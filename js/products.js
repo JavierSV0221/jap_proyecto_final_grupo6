@@ -25,14 +25,14 @@ async function displayProducts() {
         if (!catID) {
             console.error("displayProducts() - error: no category ID found");
             document.getElementById("category").textContent = "Categoría no encontrada";
-            document.getElementById("categoryDescription").textContent = ""
+            document.getElementById("categoryDescription").textContent = "";
             return;
         }
 
         const category = await fetchCategoryByID(catID);
         if (!category) {
             document.getElementById("category").textContent = "Categoría no encontrada";
-            document.getElementById("categoryDescription").textContent = ""
+            document.getElementById("categoryDescription").textContent = "";
             return;
         }
 
@@ -41,7 +41,7 @@ async function displayProducts() {
 
         const products = await fetchProductsByCatID(catID);
         if (products === null) {
-            console.error("displayProducts() - error: no products found for category ID", catID);
+            console.error("displayProducts() - error: error loading products for category ID", catID);
             let msg = document.createElement("p");
             msg.textContent = "Error al cargar los productos de la categoría.";
             container.appendChild(msg);
