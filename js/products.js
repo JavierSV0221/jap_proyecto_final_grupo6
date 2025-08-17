@@ -61,20 +61,25 @@ async function displayProducts() {
             descElement.textContent = description;
 
             const costElement = document.createElement("p");
-            costElement.textContent = `Precio: ${currency} ${cost}`;
+            costElement.textContent = `${currency} ${cost}`;
 
             const soldCountElement = document.createElement("span");
-            soldCountElement.textContent = soldCount;
+            soldCountElement.textContent = `${soldCount} ${(soldCount === 1) ? ' Vendido' : ' Vendidos'}`;
 
-            const soldCountTextElement = document.createTextNode(
-                (soldCount === 1) ? ' Vendido' : ' Vendidos'
-            );
+            const nameDescriptionInfoDiv = document.createElement("div");
+            nameDescriptionInfoDiv.className = "product-name-description";
 
-            productInfoDiv.appendChild(nameElement);
-            productInfoDiv.appendChild(descElement);
-            productInfoDiv.appendChild(costElement);
-            productInfoDiv.appendChild(soldCountElement);
-            productInfoDiv.appendChild(soldCountTextElement);
+            const soldPriceInfoDiv = document.createElement("div");
+            soldPriceInfoDiv.className = "product-sold-price";
+
+            nameDescriptionInfoDiv.appendChild(nameElement);
+            nameDescriptionInfoDiv.appendChild(descElement);
+            soldPriceInfoDiv.appendChild(soldCountElement);
+            soldPriceInfoDiv.appendChild(costElement);
+
+            productInfoDiv.appendChild(nameDescriptionInfoDiv);
+            productInfoDiv.appendChild(soldPriceInfoDiv);
+
             productDiv.appendChild(imgElement);
             productDiv.appendChild(productInfoDiv);
 
@@ -88,3 +93,22 @@ async function displayProducts() {
 document.addEventListener("DOMContentLoaded", async () => {
     await displayProducts();
 });
+
+
+// CAMBIAR ENTRE MODO LISTA Y GRID
+const checkbox = document.getElementById('list-grid');
+const icon = document.getElementById('icon-list-grid');
+const products = document.getElementById('products');
+
+function updateIcon() {
+    products.classList.remove('list-view');
+    products.classList.remove('grid-view');
+
+    products.classList.add(checkbox.checked ? 'list-view' : 'grid-view');
+
+    icon.textContent = checkbox.checked ? 'grid_view' : 'view_list';
+}
+
+checkbox.addEventListener('change', updateIcon);
+
+updateIcon();

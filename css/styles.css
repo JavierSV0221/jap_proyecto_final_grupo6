@@ -1,21 +1,28 @@
-@import url("https://fonts.googleapis.com/css2?family=Nata+Sans:wght@400;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Nata+Sans:wght@100..900&display=swap');
+
 :root {
   /* Modo Claro */
-  --primary-background: #f4e9e4;
-  --second-background: #e9b872;
+  --primary-background: #F4E9E4;
+  --second-background: #E9B872;
   --text-color: #181410;
-  --enfasis-color: #c97b4b;
-  --extra: #ffffff;
+  --enfasis-color: #C97B4B;
+  --extra: #FFFFFF;
 }
 
 .dark-mode {
   /* Modo Oscuro */
   --primary-background: #292420;
-  --second-background: #522f19;
-  --text-color: #f6ede3;
-  --enfasis-color: #c97b4b;
+  --second-background: #522F19;
+  --text-color: #F6EDE3;
+  --enfasis-color: #C97B4B;
   --extra: #000000;
+}
 
+*{
+  box-sizing: border-box;
+  font-family: "Nata Sans", sans-serif;
+  transition: background 0.3s ease, color 0.3s ease;
+  color: var(--text-color);
 }
 
 .jumbotron,
