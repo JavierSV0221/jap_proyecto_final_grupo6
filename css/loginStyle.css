@@ -30,7 +30,7 @@ body {
   --GAP: clamp(28px, 5vw, 72px);
   --BRAND_COL: 1230px;    /*Mover brand (la parte marron del login)*/
   --FORM_COL:  540px;   /*Mover formulario de login*/
-  --FORM_INNER: min(500px, 92vw);;  
+  --FORM_INNER: min(500px, 92vw);
   --brandPadTop: 296px;
   --brandPadLeft: 112px;
   --brandPadRight: 72px;
@@ -125,7 +125,7 @@ body {
   width: 100%;
   max-width: var(--FORM_INNER);
   margin-inline: auto;
-  text-align: left
+  text-align: left;
 }
 
 .formTitle {
