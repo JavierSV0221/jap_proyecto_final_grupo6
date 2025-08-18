@@ -43,34 +43,46 @@ let getJSONData = function(url){
 // MODO CLARO/OSCURO
 const body = document.body;
 const toggleBtn = document.getElementById("toggle-theme");
-const toggleIcon = toggleBtn.querySelector(".material-icons");
+if (toggleBtn) {
+    const toggleIcon = toggleBtn.querySelector(".material-icons");
 
-const savedTheme = localStorage.getItem("theme");
-const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const savedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
-    body.classList.add("dark-mode");
-    toggleIcon.textContent = "light_mode";
+    if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+        body.classList.add("dark-mode");
+        toggleIcon.textContent = "light_mode";
+    }
+
+    function toggleTheme() {
+        body.classList.toggle("dark-mode");
+        const isDark = body.classList.contains("dark-mode");
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+        toggleIcon.textContent = isDark ? "light_mode" : "dark_mode";
+    }
+
+    toggleIcon.textContent = body.classList.contains("dark-mode")
+        ? "light_mode"
+        : "dark_mode";
+
+    toggleBtn.addEventListener("click", toggleTheme);
 }
-
-function toggleTheme() {
-    body.classList.toggle("dark-mode");
-    const isDark = body.classList.contains("dark-mode");
-    localStorage.setItem("theme", isDark ? "dark" : "light");
-    toggleIcon.textContent = isDark ? "light_mode" : "dark_mode";
-}
-
-toggleIcon.textContent = body.classList.contains("dark-mode")
-    ? "light_mode"
-    : "dark_mode";
-
-toggleBtn.addEventListener("click", toggleTheme);
-
 
 // MENU HAMBURGUESA
 const navBtn = document.querySelector(".navbar-toggle");
-const nav = document.querySelector("nav");
+if (navBtn) {
+    const nav = document.querySelector("nav");
 
-navBtn.addEventListener("click", () => {
-    nav.classList.toggle("show");
+    navBtn.addEventListener("click", () => {
+        nav.classList.toggle("show");
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    const isLoggedIn = localStorage.getItem("session") !== null;
+    if (!window.location.pathname.includes("login.html") && !isLoggedIn) {
+        window.location.href = "login.html";
+    } else if(window.location.pathname.includes("login.html") && isLoggedIn){
+        window.location.href = "index.html";
+    }
 });
