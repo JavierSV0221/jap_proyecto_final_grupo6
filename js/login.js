@@ -16,3 +16,12 @@ document.querySelector("form").addEventListener("submit", function(event) {
     window.location.href = "index.html";
 });
 
+const password = document.getElementById('password');
+  const btn = document.getElementById('togglePassword');
+
+  btn.addEventListener('click', () => {
+    const show = password.type === 'password';
+    password.type = show ? 'text' : 'password';
+    btn.classList.toggle('showing', show);
+    btn.setAttribute('aria-pressed', String(show));
+  });
