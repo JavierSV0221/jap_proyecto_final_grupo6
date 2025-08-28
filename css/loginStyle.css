@@ -135,17 +135,17 @@ input, button { font: inherit; }
 
 .password-wrapper { position: relative; }
 
-/* deja espacio para el botón dentro del input */
+
 .password-wrapper .formControl { padding-right: 46px; }
 
-/* botón redondito y bien alineado */
+
 .pw-toggle {
   position: absolute;
   top: 65%;
   right: 10px;
   transform: translateY(-50%);
-  background: transparent;   /* sin fondo */
-  border: none;              /* sin borde */
+  background: transparent;   
+  border: none;             
   padding: 0;
   margin: 0;
   cursor: pointer;
@@ -182,10 +182,19 @@ input, button { font: inherit; }
   .brandImg {
     width: clamp(220px, 40vw, 380px);
   }
-    /* Bajamos solo el texto */
+   
   .brandTitle{
-    margin-top: 300px; /* probá 40px, 60px, 80px según cuánto quieras bajarlo */
+    margin-top: 300px; 
   }
+
+  .formTitle{
+    font-size: 38px;
+  }
+
+  .brandSubtitle{
+    font-size: 25px;
+  }
+
 }
 
 
@@ -242,7 +251,7 @@ input, button { font: inherit; }
     justify-items: stretch;
   }
   .formTitle{
-    font-size: 18px;
+    font-size: 30px;
     margin: 6px 0 4px;
     text-align: center;
   }

@@ -86,3 +86,22 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = "index.html";
     }
 });
+// MUESTRO NOMBRE DE USUARIO EN EL ICONO DE USUARIO
+document.addEventListener("DOMContentLoaded",() => {
+  const sessionData = localStorage.getItem("session");
+  if (sessionData) {
+    try{
+      const session = JSON.parse(sessionData);
+      const username = session.username ?? "";
+      const userAccountBtn = document.getElementById("userAccount");
+
+      if(userAccountBtn){
+        userAccountBtn.innerHTML = `
+          <span class="material-icons">account_circle</span>
+          <p>${username}</p>
+        `;
+    }
+  } catch (e) {
+    console.error("Error parsing session data:", e);
+  }
+}});
