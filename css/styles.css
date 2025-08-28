@@ -215,3 +215,124 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+
+/* ==========================
+   HEADER
+========================== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  max-width: 1300px;
+  margin: auto;
+  padding: 0 20px;
+  background: var(--second-background);
+  color: var(--text-color);
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+}
+
+/* ----- Navegación ----- */
+nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 20px;
+}
+
+nav ul li {
+  display: flex;
+  align-items: center;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover {
+  color: var(--enfasis-color);
+}
+
+/* ----- Botones Header ----- */
+.toggle-theme,
+.userAccount {
+  border: none;
+  background: none;
+  cursor: pointer; 
+  border-radius: 500px;
+  transition: background 0.3s;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.userAccount p {
+  margin: auto;
+}
+
+.toggle-theme:hover,
+.userAccount:hover {
+  background: var(--enfasis-color);
+  color: var(--extra);
+}
+
+/* ----- Botón Hamburguesa ----- */
+.navbar-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.navbar-toggle span {
+  font-size: 1.5rem;
+  color: var(--text-color);
+}
+
+/* ----- Header Responsive ----- */
+@media (max-width: 768px) {
+  .navbar-toggle {
+    display: block;
+  }
+
+  .navbar-toggle span {
+    font-size: 35px;
+  }
+
+  nav {
+    display: none;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: var(--second-background);
+    width: 200px;
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  nav.show {
+    display: flex;
+  }
+}
