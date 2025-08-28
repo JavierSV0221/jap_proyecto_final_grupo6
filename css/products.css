@@ -186,3 +186,22 @@ label[for="list-grid"] span {
   font-size: 0.9rem;
   margin-top: auto;
 }
+
+@media (max-width: 768px) {
+
+#products.list-view .product img {
+  width: 100px;
+  height: 100px;
+}
+
+#products.list-view .product-info {
+  flex-direction: column;
+}
+
+#products.list-view .product-info .product-sold-price {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+}
